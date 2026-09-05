@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block title %}
+Text Generation
+{% endblock %}
+
+
+{% block content %}
+
+<h1>Text Generation</h1>
+
+<p class="page-description">
+    Generate professional content using a local language model.
+</p>
+
+
+<div class="form-container">
+
+    <label for="text-prompt">
+        Prompt
+    </label>
+
+    <textarea
+        id="text-prompt"
+        rows="8"
+        placeholder="Describe what you want to generate..."
+    ></textarea>
+
+
+    <label for="text-tone">
+        Tone
+    </label>
+
+    <select id="text-tone">
+
+        <option value="professional">
+            Professional
+        </option>
+
+        <option value="formal">
+            Formal
+        </option>
+
+        <option value="friendly">
+            Friendly
+        </option>
+
+        <option value="concise">
+            Concise
+        </option>
+
+    </select>
+
+
+    <button id="generate-text">
+        Generate
+    </button>
+
+
+    <div class="result-container">
+
+        <h2>Generated Text</h2>
+
+        <div id="text-result">
+            Your generated text will appear here.
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
