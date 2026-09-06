@@ -1,68 +1,58 @@
 {% extends "base.html" %}
 
-{% block title %}
-Text Generation
-{% endblock %}
-
+{% block title %}Text Generation{% endblock %}
 
 {% block content %}
 
-<h1>Text Generation</h1>
+<div class="page-container">
 
-<p class="page-description">
-    Generate professional content using a local language model.
-</p>
+    <div class="page-header">
+        <h1>Text Generation</h1>
+        <p>Generate text using the local GenAI model.</p>
+    </div>
 
+    <div class="generation-card">
 
-<div class="form-container">
+        <div class="form-group">
+            <label for="prompt">Prompt</label>
 
-    <label for="text-prompt">
-        Prompt
-    </label>
+            <textarea
+                id="prompt"
+                class="form-control"
+                rows="8"
+                placeholder="Enter your prompt here..."
+            ></textarea>
+        </div>
 
-    <textarea
-        id="text-prompt"
-        rows="8"
-        placeholder="Describe what you want to generate..."
-    ></textarea>
+        <div class="form-group">
+            <label for="tone">Tone</label>
 
+            <select id="tone" class="form-control">
+                <option value="professional">Professional</option>
+                <option value="formal">Formal</option>
+                <option value="friendly">Friendly</option>
+                <option value="concise">Concise</option>
+            </select>
+        </div>
 
-    <label for="text-tone">
-        Tone
-    </label>
+        <button
+            id="generate-btn"
+            class="btn-primary"
+            onclick="generateText()"
+        >
+            Generate
+        </button>
 
-    <select id="text-tone">
+        <div id="loading" class="loading hidden">
+            Generating response...
+        </div>
 
-        <option value="professional">
-            Professional
-        </option>
+        <div class="result-section">
+            <label>Generated Response</label>
 
-        <option value="formal">
-            Formal
-        </option>
-
-        <option value="friendly">
-            Friendly
-        </option>
-
-        <option value="concise">
-            Concise
-        </option>
-
-    </select>
-
-
-    <button id="generate-text">
-        Generate
-    </button>
-
-
-    <div class="result-container">
-
-        <h2>Generated Text</h2>
-
-        <div id="text-result">
-            Your generated text will appear here.
+            <div id="result" class="result-box">
+                Your generated response will appear here.
+            </div>
         </div>
 
     </div>
