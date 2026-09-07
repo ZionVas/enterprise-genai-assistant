@@ -1,0 +1,45 @@
+SAP ABAP Naming Convention Rules
+
+Rule ID: NAM-001
+Title: Local Variables
+
+Local variables should begin with the prefix L_.
+
+Example:
+L_CUSTOMER_NAME
+
+
+Rule ID: NAM-002
+Title: Global Variables
+
+Global variables should begin with the prefix G_.
+
+Example:
+G_CUSTOMER_NAME
+
+
+Rule ID: NAM-003
+Title: Local Internal Tables
+
+Local internal tables should begin with the prefix LT_.
+
+Example:
+LT_CUSTOMERS
+
+
+Rule ID: NAM-004
+Title: Local Structures
+
+Local structures and work areas should begin with the prefix LS_.
+
+Example:
+LS_CUSTOMER
+
+
+Rule ID: NAM-005
+Title: Constants
+
+Constants should begin with the prefix C_.
+
+Example:
+C_MAX_RECORDS
