@@ -2,10 +2,14 @@ from flask import Blueprint, render_template, request, jsonify
 
 from app.services.generation_graph import build_generation_graph
 
+from app.services.email_graph import build_email_graph
+
 
 main_bp = Blueprint("main", __name__)
 
 generation_graph = build_generation_graph()
+
+email_graph = build_email_graph()
 
 
 @main_bp.route("/")
@@ -66,3 +70,45 @@ def generate():
             "success": False,
             "error": str(exc)
         }), 500
+
+@main_bp.route("/api/generate-email", methods=["POST"])
+def generate_email():
+
+    data = request.get_json()
+
+    recipient = data.get("recipient", "").strip()
+    purpose = data.get("purpose", "").strip()
+    key_points = data.get("key_points", "").strip()
+    tone = data.get("tone", "professional").strip()
+    length = data.get("length", "medium").strip()
+
+    if not purpose:
+        return jsonify({
+            "success": False,
+            "error": "Email purpose cannot be empty."
+        }), 400
+
+    try:
+
+        result = email_graph.invoke(
+            {
+                "recipient": recipient,
+                "purpose": purpose,
+                "key_points": key_points,
+                "tone": tone,
+                "length": length,
+                "response": "",
+            }
+        )
+
+        return jsonify({
+            "success": True,
+            "response": result["response"]
+        })
+
+    except Exception as exc:
+
+        return jsonify({
+            "success": False,
+            "error": str(exc)
+        }), 500    

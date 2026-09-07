@@ -1,20 +1,95 @@
 {% extends "base.html" %}
 
-{% block title %}
-Email Generation
-{% endblock %}
+{% block title %}Email Generation{% endblock %}
 
 {% block content %}
 
-<h1>Email Generation</h1>
+<div class="page-container">
 
-<p class="page-description">
-    Generate professional emails using a local language model.
-</p>
+    <div class="page-header">
+        <h1>Email Generation</h1>
+        <p>Create professional emails using the local GenAI model.</p>
+    </div>
 
-<div class="form-container">
+    <div class="generation-card">
 
-    <p>Email generation interface will be implemented next.</p>
+        <div class="form-group">
+            <label for="recipient">Recipient</label>
+
+            <input
+                id="recipient"
+                class="form-control"
+                type="text"
+                placeholder="Example: My Manager"
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="purpose">Purpose</label>
+
+            <input
+                id="purpose"
+                class="form-control"
+                type="text"
+                placeholder="Example: Request one day of leave"
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="key-points">Key Points</label>
+
+            <textarea
+                id="key-points"
+                class="form-control"
+                rows="5"
+                placeholder="Enter the important points you want to include..."
+            ></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="email-tone">Tone</label>
+
+            <select id="email-tone" class="form-control">
+                <option value="professional">Professional</option>
+                <option value="formal">Formal</option>
+                <option value="friendly">Friendly</option>
+                <option value="concise">Concise</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="email-length">Length</label>
+
+            <select id="email-length" class="form-control">
+                <option value="short">Short</option>
+                <option value="medium">Medium</option>
+                <option value="long">Long</option>
+            </select>
+        </div>
+
+        <button
+            id="email-generate-btn"
+            class="btn-primary"
+            onclick="generateEmail()"
+        >
+            Generate Email
+        </button>
+
+        <div id="email-loading" class="loading hidden">
+            Generating email...
+        </div>
+
+        <div class="result-section">
+
+            <label>Generated Email</label>
+
+            <div id="email-result" class="result-box">
+                Your generated email will appear here.
+            </div>
+
+        </div>
+
+    </div>
 
 </div>
 
