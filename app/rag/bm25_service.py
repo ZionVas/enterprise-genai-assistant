@@ -56,8 +56,9 @@ class BM25Service:
         for index in ranked_indices[:top_k]:
             results.append(
                 {
+                    "chunk_id": self.documents[index].metadata["chunk_id"],
                     "score": float(scores[index]),
-                    "text": self.documents[index].page_content,
+        "           text": self.documents[index].page_content,
                     "metadata": self.documents[index].metadata,
                 }
             )

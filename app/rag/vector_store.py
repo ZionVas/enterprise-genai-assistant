@@ -1,5 +1,3 @@
-from uuid import uuid4
-
 from qdrant_client.models import PointStruct
 
 from app.rag.embedding_service import get_embedding_service
@@ -38,7 +36,7 @@ def store_documents(documents):
 
         points.append(
             PointStruct(
-                id=str(uuid4()),
+                id=document.metadata["chunk_id"],
                 vector=embedding,
                 payload=payload,
             )

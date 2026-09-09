@@ -24,6 +24,7 @@ def retrieve_documents(
     for result in results.points:
         documents.append(
             {
+                "chunk_id": result.payload["metadata"]["chunk_id"],
                 "score": result.score,
                 "text": result.payload.get("text", ""),
                 "metadata": result.payload.get("metadata", {}),

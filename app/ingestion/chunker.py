@@ -1,5 +1,17 @@
+import hashlib
+
 from langchain_core.documents import Document
 from langchain_text_splitters import RecursiveCharacterTextSplitter
+
+
+def create_chunk_id(document: Document, chunk_index: int) -> str:
+    source = document.metadata.get("source", "")
+
+    raw_id = f"{source}:{chunk_index}"
+
+    return hashlib.sha256(
+        raw_id.encode("utf-8")
+    ).hexdigest()[:16]
 
 
 def split_documents(
@@ -17,5 +29,10 @@ def split_documents(
 
     for index, chunk in enumerate(chunks):
         chunk.metadata["chunk_index"] = index
+
+        chunk.metadata["chunk_id"] = create_chunk_id(
+            chunk,
+            index,
+        )
 
     return chunks
