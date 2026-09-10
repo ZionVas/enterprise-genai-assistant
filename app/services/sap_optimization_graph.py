@@ -1,3 +1,13 @@
+from langgraph.graph import StateGraph, START, END
+
+from app.config import Config
+
+from app.models.sap_optimization_state import SAPOptimizationState
+from app.prompts.sap_optimization_prompts import sap_optimization_prompt
+from app.prompts.sap_validation_prompts import sap_validation_prompt
+from app.services.llm_service import get_llm
+from app.rag.reranked_retriever import retrieve_with_reranking
+
 from langgraph.graph import (
     StateGraph,
     START,
@@ -23,7 +33,7 @@ from app.rag.reranked_retriever import (
 )
 
 
-MAX_ITERATIONS = 2
+MAX_ITERATIONS = Config.MAX_OPTIMIZATION_ITERATIONS
 
 
 def retrieve_optimization_rules(

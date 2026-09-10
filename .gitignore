@@ -12,3 +12,14 @@ data/private/
 
 .pytest_cache/
 .vscode/
+.venv/
+.env
+
+__pycache__/
+*.pyc
+
+.pytest_cache/
+
+data/processed/
+
+.vscode/

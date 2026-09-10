@@ -1,8 +1,10 @@
 from langchain_ollama import ChatOllama
 
+from app.config import Config
+
 
 def get_llm():
     return ChatOllama(
-        model="qwen3:4b",
-        temperature=0.2,
+        model=Config.LLM_MODEL,
+        temperature=Config.LLM_TEMPERATURE,
     )

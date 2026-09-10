@@ -1,22 +1,34 @@
 from collections import defaultdict
 
+from app.config import Config
+
 
 def reciprocal_rank_fusion(
     result_lists: list[list[dict]],
-    k: int = 60,
-    top_k: int = 5,
+    k: int | None = None,
+    top_k: int | None = None,
 ) -> list[dict]:
+
+    if k is None:
+        k = Config.RRF_K
+
+    if top_k is None:
+        top_k = Config.TOP_K
 
     scores = defaultdict(float)
     documents = {}
 
     for results in result_lists:
 
-        for rank, result in enumerate(results, start=1):
-
+        for rank, result in enumerate(
+            results,
+            start=1,
+        ):
             chunk_id = result["chunk_id"]
 
-            scores[chunk_id] += 1 / (k + rank)
+            scores[chunk_id] += (
+                1 / (k + rank)
+            )
 
             if chunk_id not in documents:
                 documents[chunk_id] = result

@@ -1,13 +1,14 @@
 from qdrant_client import QdrantClient
 from qdrant_client.models import Distance, VectorParams
 
-
-QDRANT_URL = "http://localhost:6333"
+from app.config import Config
 
 
 class QdrantService:
     def __init__(self):
-        self.client = QdrantClient(url=QDRANT_URL)
+        self.client = QdrantClient(
+            url=Config.QDRANT_URL
+        )
 
     def create_collection(
         self,
@@ -32,7 +33,10 @@ class QdrantService:
             ),
         )
 
-    def collection_exists(self, collection_name: str) -> bool:
+    def collection_exists(
+        self,
+        collection_name: str,
+    ) -> bool:
         collections = self.client.get_collections()
 
         return collection_name in {

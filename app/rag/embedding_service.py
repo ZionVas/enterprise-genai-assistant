@@ -1,14 +1,18 @@
 from sentence_transformers import SentenceTransformer
 
-
-MODEL_NAME = "BAAI/bge-m3"
+from app.config import Config
 
 
 class EmbeddingService:
     def __init__(self):
-        self.model = SentenceTransformer(MODEL_NAME)
+        self.model = SentenceTransformer(
+            Config.EMBEDDING_MODEL
+        )
 
-    def embed_documents(self, texts: list[str]) -> list[list[float]]:
+    def embed_documents(
+        self,
+        texts: list[str],
+    ) -> list[list[float]]:
         embeddings = self.model.encode(
             texts,
             normalize_embeddings=True,
@@ -17,7 +21,10 @@ class EmbeddingService:
 
         return embeddings.tolist()
 
-    def embed_query(self, text: str) -> list[float]:
+    def embed_query(
+        self,
+        text: str,
+    ) -> list[float]:
         embedding = self.model.encode(
             text,
             normalize_embeddings=True,

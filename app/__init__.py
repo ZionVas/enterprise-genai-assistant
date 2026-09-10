@@ -2,6 +2,7 @@ from flask import Flask
 from app.routes.code_routes import code_bp
 from app.routes.sap_naming_routes import sap_naming_bp
 from app.routes.sap_optimization_routes import sap_optimization_bp
+from app.routes.health_routes import health_bp
 
 def create_app():
     app = Flask(
@@ -19,5 +20,7 @@ def create_app():
     app.register_blueprint(sap_naming_bp)
 
     app.register_blueprint(sap_optimization_bp)
+
+    app.register_blueprint(health_bp)
 
     return app
