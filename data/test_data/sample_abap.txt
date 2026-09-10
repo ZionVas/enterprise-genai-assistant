@@ -1,0 +1,14 @@
+REPORT z_customer_demo.
+
+DATA: customer_name TYPE string,
+      customer_id   TYPE string.
+
+DATA: customers TYPE TABLE OF string.
+
+DATA: customer TYPE string.
+
+CONSTANTS: max_records TYPE i VALUE 100.
+
+customer_name = 'John'.
+
+APPEND customer_name TO customers.
