@@ -1,0 +1,19 @@
+REPORT z_customer_optimization.
+
+DATA: lt_customers TYPE TABLE OF string.
+DATA: ls_customer TYPE string.
+
+SELECT *
+  FROM zcustomer
+  INTO TABLE lt_customers.
+
+LOOP AT lt_customers INTO ls_customer.
+
+  SELECT SINGLE *
+    FROM zcustomer
+    INTO ls_customer
+    WHERE customer_id = ls_customer.
+
+  WRITE: / ls_customer.
+
+ENDLOOP.

@@ -1,0 +1,56 @@
+SAP ABAP Code Optimization Rules
+
+Rule ID: OPT-001
+Title: Avoid SELECT inside LOOP
+
+Avoid executing database SELECT statements repeatedly inside LOOP statements.
+
+Prefer retrieving required database data before the LOOP whenever practical.
+
+Bad Pattern:
+LOOP AT LT_CUSTOMERS INTO LS_CUSTOMER.
+    SELECT SINGLE ...
+ENDLOOP.
+
+Preferred Pattern:
+Retrieve the required data once before processing the internal table.
+
+
+Rule ID: OPT-002
+Title: Avoid SELECT *
+
+Do not use SELECT * when only specific fields are required.
+
+Select only the database fields needed by the application.
+
+
+Rule ID: OPT-003
+Title: Reduce Database Calls
+
+Avoid unnecessary repeated database access.
+
+Combine or restructure database operations when practical to reduce the number of database calls.
+
+
+Rule ID: OPT-004
+Title: Use Appropriate Internal Tables
+
+Choose an appropriate internal table type based on the access pattern.
+
+Use SORTED or HASHED tables when their access characteristics provide a meaningful performance benefit.
+
+
+Rule ID: OPT-005
+Title: Avoid Unnecessary Nested Loops
+
+Avoid deeply nested loops when the same result can be achieved more efficiently.
+
+Consider appropriate internal table access strategies or database-side processing.
+
+
+Rule ID: OPT-006
+Title: Preserve Business Logic
+
+Optimization must not change the functional or business behavior of the original ABAP program.
+
+Any optimization should preserve the expected output and processing semantics.
