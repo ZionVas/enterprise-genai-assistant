@@ -1,21 +1,116 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block title %}
-SAP ABAP Code Optimization
-{% endblock %}
+<head>
 
-{% block content %}
+    <meta charset="UTF-8">
 
-<h1>SAP ABAP Code Optimization</h1>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<p class="page-description">
-    Optimize SAP ABAP code using enterprise coding standards.
-</p>
+    <title>SAP ABAP Code Optimization</title>
 
-<div class="form-container">
+    <link
+        rel="stylesheet"
+        href="{{ url_for(
+            'static',
+            filename='css/style.css'
+        ) }}"
+    >
 
-    <p>SAP optimization interface will be implemented next.</p>
+</head>
 
-</div>
+<body>
 
-{% endblock %}
+    <div class="container">
+
+        <h1>SAP ABAP Code Optimization</h1>
+
+        <p>
+            Optimize SAP ABAP code using retrieved
+            optimization standards and an iterative
+            validation workflow.
+        </p>
+
+
+        <div class="form-group">
+
+            <label for="original-code">
+                Existing SAP ABAP Code
+            </label>
+
+            <textarea
+                id="original-code"
+                rows="20"
+                placeholder="Paste your SAP ABAP code here..."
+            ></textarea>
+
+        </div>
+
+
+        <button
+            id="optimize-button"
+        >
+            Optimize ABAP
+        </button>
+
+
+        <div
+            id="loading"
+            style="display: none;"
+        >
+            Retrieving optimization rules,
+            optimizing and validating ABAP...
+        </div>
+
+
+        <div
+            id="result-section"
+            style="display: none;"
+        >
+
+            <h2>Optimized ABAP Code</h2>
+
+            <pre>
+                <code
+                    id="optimized-code"
+                ></code>
+            </pre>
+
+
+            <h2>Validation</h2>
+
+            <div id="validation-status"></div>
+
+            <div id="validation-errors"></div>
+
+
+            <h2>Optimization Details</h2>
+
+            <p>
+                Iterations:
+                <span id="iterations"></span>
+            </p>
+
+
+            <h2>Retrieved Rules / Sources</h2>
+
+            <div id="sources"></div>
+
+        </div>
+
+    </div>
+
+
+    <script
+        src="{{ url_for(
+            'static',
+            filename='js/sap_optimization.js'
+        ) }}"
+    ></script>
+
+</body>
+
+</html>
