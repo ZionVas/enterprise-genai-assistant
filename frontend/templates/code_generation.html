@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Code Generation</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>RAG Code Generation</h1>
+
+        <p>
+            Generate code using retrieved company coding standards.
+        </p>
+
+        <div class="form-group">
+
+            <label for="language">
+                Programming Language
+            </label>
+
+            <select id="language">
+
+                <option value="Python">
+                    Python
+                </option>
+
+                <option value="ABAP">
+                    SAP ABAP
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label for="user-request">
+                What do you want to build?
+            </label>
+
+            <textarea
+                id="user-request"
+                rows="8"
+                placeholder="Example: Create a Python function to read customer records..."
+            ></textarea>
+
+        </div>
+
+
+        <button
+            id="generate-button"
+        >
+            Generate Code
+        </button>
+
+
+        <div
+            id="loading"
+            style="display: none;"
+        >
+            Generating code using RAG...
+        </div>
+
+
+        <div
+            id="result-section"
+            style="display: none;"
+        >
+
+            <h2>Generated Code</h2>
+
+            <pre>
+                <code id="generated-code"></code>
+            </pre>
+
+
+            <h2>Retrieved Sources</h2>
+
+            <div id="sources"></div>
+
+        </div>
+
+    </div>
+
+
+    <script
+        src="{{ url_for('static', filename='js/code_generation.js') }}"
+    ></script>
+
+</body>
+
+</html>
