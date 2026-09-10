@@ -1,21 +1,99 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block title %}
-SAP ABAP Naming Convention
-{% endblock %}
+<head>
 
-{% block content %}
+    <meta charset="UTF-8">
 
-<h1>SAP ABAP Naming Convention</h1>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<p class="page-description">
-    Validate SAP ABAP code against enterprise naming standards.
-</p>
+    <title>SAP ABAP Naming Convention</title>
 
-<div class="form-container">
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
 
-    <p>SAP naming convention interface will be implemented next.</p>
+</head>
 
-</div>
+<body>
 
-{% endblock %}
+    <div class="container">
+
+        <h1>SAP ABAP Naming Convention</h1>
+
+        <p>
+            Paste your existing SAP ABAP code.
+            The system will retrieve relevant company
+            naming conventions and correct the code.
+        </p>
+
+
+        <div class="form-group">
+
+            <label for="original-code">
+                Existing SAP ABAP Code
+            </label>
+
+            <textarea
+                id="original-code"
+                rows="18"
+                placeholder="Paste your SAP ABAP code here..."
+            ></textarea>
+
+        </div>
+
+
+        <button
+            id="correct-button"
+        >
+            Correct Naming Convention
+        </button>
+
+
+        <div
+            id="loading"
+            style="display: none;"
+        >
+
+            Analyzing SAP ABAP code and retrieving naming rules...
+
+        </div>
+
+
+        <div
+            id="result-section"
+            style="display: none;"
+        >
+
+            <h2>Corrected ABAP Code</h2>
+
+            <pre>
+                <code
+                    id="corrected-code"
+                ></code>
+            </pre>
+
+
+            <h2>Retrieved Rules / Sources</h2>
+
+            <div id="sources"></div>
+
+        </div>
+
+    </div>
+
+
+    <script
+        src="{{ url_for(
+            'static',
+            filename='js/sap_naming.js'
+        ) }}"
+    ></script>
+
+</body>
+
+</html>
