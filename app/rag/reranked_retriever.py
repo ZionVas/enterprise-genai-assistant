@@ -38,3 +38,7 @@ def hybrid_search(
     )
 
     return fused_results
+
+def retrieve_with_reranking(query: str, top_k: int | None = None):
+    
+    return hybrid_search(query=query, top_k=top_k)

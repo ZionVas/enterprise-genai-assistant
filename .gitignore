@@ -5,8 +5,6 @@ __pycache__/
 .env.*
 !.env.example
 
-models/
-qdrant_storage/
 
 data/private/
 
@@ -19,7 +17,5 @@ __pycache__/
 *.pyc
 
 .pytest_cache/
-
-data/processed/
 
 .vscode/

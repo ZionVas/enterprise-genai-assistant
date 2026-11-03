@@ -3,7 +3,7 @@ from langgraph.graph import StateGraph, START, END
 from app.models.code_state import CodeGenerationState
 from app.prompts.code_prompts import code_generation_prompt
 from app.services.llm_service import get_llm
-from app.rag.reranked_retriever import retrieve_with_reranking # type: ignore
+from app.rag.reranked_retriever import retrieve_with_reranking 
 
 
 def retrieve_rules(state: CodeGenerationState):

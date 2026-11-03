@@ -1,5 +1,5 @@
 from app.rag.bm25_index import build_bm25_index
-from app.rag.hybrid_retriever import hybrid_search
+from app.rag.reranked_retriever import hybrid_search
 from app.rag.vector_store import store_documents
 from app.ingestion.pipeline import ingest_document
 

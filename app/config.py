@@ -16,8 +16,8 @@ class Config:
     # Qdrant Configuration
     # -----------------------------
     QDRANT_URL = os.getenv(
-        "QDRANT_URL",
-        "http://localhost:6333",
+        "QDRANT_PATH",
+        "data/qdrant",
     )
 
     # -----------------------------
